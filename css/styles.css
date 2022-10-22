@@ -10,6 +10,14 @@
     --contacts-text-color: rgba(255, 255, 255, 0.6);
     --color-button-active: #188CE8;
     --color-icon: #AFB1B8;
+    --animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) ;
+    --modal-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    --project-list-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+        0px 4px 4px rgba(0, 0, 0, 0.06),
+        1px 4px 6px rgba(0, 0, 0, 0.16);
+    --portfolio-button-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
+        0px 1px 2px rgba(0, 0, 0, 0.08),
+        0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 /* головне */
@@ -72,7 +80,7 @@ img {
 
 .link {
     text-decoration: none;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: color 250ms var(--animation-timing-function) 250ms;
 }
 
 .link:hover,
@@ -194,7 +202,7 @@ img {
     font-size: 16px;
     line-height: 1.9;
     color: var(--color-white);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: background-color 250ms var(--animation-timing-function) 250ms;
 }
 
 .main-button:hover,
@@ -309,7 +317,7 @@ img {
 .team-item {
     background-color: var(--color-white);
     width: 270px;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: var(--modal-shadow);
     border-radius: 4px;
 }
 
@@ -342,7 +350,7 @@ img {
 
 .soc-icon {
     fill: var(--color-icon);
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: fill 250ms var(--animation-timing-function) 250ms;
 }
 
 .soc-link {
@@ -352,7 +360,7 @@ img {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: background-color 250ms var(--animation-timing-function) 250ms;
 }
 
 .soc-link:hover,
@@ -378,7 +386,7 @@ img {
     border: 1px solid var(--color-icon);
     border-radius: 4px;
     width: 170px;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: border 250ms var(--animation-timing-function) 250ms;
 }
 
 .clients-link:hover,
@@ -390,7 +398,7 @@ img {
 .clients-icon {
     display: block;
     fill: var(--color-icon);
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: fill 250ms var(--animation-timing-function) 250ms;
 }
 
 .clients-link:hover .clients-icon,
@@ -467,7 +475,7 @@ img {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
 
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: background-color 250ms var(--animation-timing-function) 250ms;
 }
 
 .join-link:hover,
@@ -499,14 +507,14 @@ img {
     border-radius: 4px;
     letter-spacing: inherit;
 
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: background-color 250ms var(--animation-timing-function) 250ms, color 250ms var(--animation-timing-function) 250ms;
 }
 
 .portfolio-menu:hover,
 .portfolio-menu:focus {
     background-color: var(--color-decoration);
     color: var(--color-white);
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--portfolio-button-shadow);
     border-radius: 4px;
     
 }
@@ -521,9 +529,8 @@ img {
 }
 
 .project-list-item:hover {
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
-        0px 4px 4px rgba(0, 0, 0, 0.06),
-        1px 4px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: var(--project-list-shadow);
+    transition: box-shadow 250ms var(--animation-timing-function) 250ms;
 }
 
 .project-list-overlay {
@@ -542,7 +549,7 @@ img {
     top: 0;
     background-color: rgba(33, 150, 243, 0.9);
     transform: translateY(100%);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+    transition: transform 250ms var(--animation-timing-function) 250ms;
 
     padding: 63px 24px;
     font-size: 18px;
@@ -584,14 +591,11 @@ img {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-
+    transition: transform 250ms, opacity 250ms, visibility 250ms;
 }
 
 .backdrop.is-hidden .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translate(-50%, -50%) scale(0.9);
 }
 
 .backdrop {
@@ -600,9 +604,7 @@ img {
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 1;
     background-color: rgba(0, 0, 0, 0.2);
-    transition: transform 250ms, opacity 250ms, visibility 250ms;
 
 }
 
@@ -611,15 +613,13 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    transition: transform 2500ms;
-    
+    transition: transform 250ms var(--animation-timing-function);
     width: 528px;
     max-height: 581px;
     height: 100%;
     overflow: auto;
     background-color: var(--color-white);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-
+    box-shadow: var(--modal-shadow);
     border-radius: 4px;
 
 }
@@ -641,5 +641,6 @@ img {
 
 .close-button:hover {
     cursor: pointer;
+    fill: var(--color-decoration);
 
 }
